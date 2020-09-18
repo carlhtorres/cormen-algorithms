@@ -1,16 +1,19 @@
-# This is a sample Python script.
+import numpy
+import timeit
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
+from ch2 import insertionSort
 
 
-# Press the green button in the gutter to run the script.
+def time(n):
+    pass
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    for n in [1e1, 1e2, 1e3, 1e4]:
+        A = numpy.random.randint(0, 100, int(n))
+        print(
+            f"n={n}",
+            timeit.timeit(
+                'insertionSort(A)', 'from __main__ import insertionSort, A', number=1),
+            "seconds")
